@@ -1,0 +1,495 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{dipneuste}
+
+\begin{document}
+
+\section{Un premier quotient symplectique : $\C^2/\!\!/\ U(1)$}
+\subsection{Structures et notations}
+Soit $M = \C^2$ munit des coordonnées $w = (w^1,w^2) = (x^1 + i y^1,x^2 + i y^2)$, de la structure riemannienne : 
+\[
+g = (\dd x^1)^2 + (\dd y^1)^2 + (\dd x^2)^2 + (\dd y^2)^2
+\]
+et de la structure complexe
+\[
+I \dpp{}{w^k} = i \dpp{}{w^k}
+\]
+qui induisent une structure symplectique réelle
+\[
+\omega = -g(\_,I\_) = \dd x^1 \wedge \dd y^1 + \dd x^2 \wedge \dd y^2
+\]
+
+
+\bigskip
+\begin{center}
+\textit{On notera une expression de la forme 
+\[
+\sum_{k=1,2} f(x^k,y^k)
+\]
+par $f(x,y)$.}
+\end{center}
+\bigskip
+
+Ainsi les structures riemannienne et symplectiques s'écrivent
+\[
+g = (\dd x)^2 + (\dd y)^2 \qquad \omega = \dd x \wedge \dd y
+\]
+
+\subsection{L'action du groupe $U(1)$}
+Le groupe de lie $G = U(1)$ agit sur $M$ par homothétie
+\[
+g \cdot w = (gw^1,gw^2)
+\]
+On remarque que cette action préserve la forme symplectique $\omega$.
+
+A un point $w \in  M$ fixé, on peut associer une application lisse
+\[
+\left(
+\begin{array}{rcl}
+G & \longrightarrow & M \\
+g & \mapsto & g\cdot w
+\end{array}
+\right)
+\]
+Qui s'exprime dans les coordonnées réelles par
+\[
+e^{i\theta}\cdot (x+ i y) = (\cos(\theta)x -\sin(\theta)y) + i (\cos(\theta)y + \sin(\theta)x)
+\]
+D'où en $\theta = 0$,
+\[
+e^{i\theta + it}\cdot (x+ i y) = (\cos(t)x-\sin(t)y) + i (\cos(t)y +\sin(t)x) = x + i y + t(-y+ix) + o(t)
+\]
+Ainsi la différentielle en $g = 1$ nous donne
+\[
+\left(
+\begin{array}{rcl}
+T_1 G & \longrightarrow & T_w M \\
+it & \mapsto & -ty\dpp{}{x} + tx\dpp{}{y}
+\end{array}
+\right)
+\]
+
+On notera $X_w^t$ le vecteur ainsi obtenu. En faisant varier $w$, on obtient un champ de vecteur $X^t$ lisse sur $M$, ce champ de vecteur représente l'action infinitésimale de $G$ sur $M$.
+
+\subsection{Application moment}
+Considérons $\omega(X^t,\_)$ le produit intérieur de $\omega$ par $X^t$.
+\[
+\omega(X^t,\_) = ty\dd y tx \dd x = \dfrac{t}{2}\dd (yy + xx) 
+\]
+Notons $\mu^t : M \longrightarrow \R$ donnée par \[
+w=(x,y) \mapsto \dfrac{t}{2}( xx + yy )\]
+
+Dès lors le couplage $(t,w) \mapsto \mu^t(w)$ nous donne une application $\mu : M \rightarrow \mathfrak{u}(1)^\vee \cong \R$ : 
+$w \mapsto \demi( xx + yy )$.
+Enfin cette application commute avec l'action de $G$ (sur $M$ et sur $\mathfrak{u}(1)^\vee$).
+
+\subsection{Sous-variété de moment}
+Considérons dès lors $N_a = \mu^{-1}(a)$. Pour $a \neq 0$ c'est une sous-variété (non vide pour $a>0$). De plus l'équivariance de $\mu$ entraîne que $N_a$ est stable sous l'action de $G$.
+
+On fixera dans toute la suite un $a=\demi$. Alors $N_a = \ens{(w^1,w^2)\in M}{|w^1|^2 + |w^2|^2 = 2a = 1}$ est $\S^3_{\C^2}$ la sphère unité de $\C^2$.
+
+\subsection{Quotient symplectique}
+$G$ agit proprement sans point fixe sur $N_a$, et l'on peut donc considérer la variété quotient $S = N_a/G$.
+
+On sait qu'on peut associer à tout $w \in N_a = \S^3_{\C^2}$ la droite vectorielle de $\C^2$ qu'elle engendre, ce qui nous donne une application $N_a \rightarrow \Pro^1$ qui s'écrit $(w^1,w^2) \mapsto [w^1 : w^2]$. Or la fibre au dessus d'un élément $[z:z'] \in \Pro^1$ est exactement l'ensemble des $(gz,gz')$ pour $g \in U(1)$. C'est la fibration de \textsc{Hopf}.
+
+Le quotient s'identifie donc à $\Pro^1$.
+
+\subsection{Relèvement des champs de vecteurs}
+Notre quotient donne lieu à la suite exacte de fibrés vectoriels sur $\S^3$ suivante
+\[
+0 \rightarrow \ker \dd \pi \longrightarrow T\S^3 \overset{\dd \pi}{\longrightarrow} \pi^* T\S^2 \rightarrow 0
+\]
+On cherche étant donné un champ de vecteur sur $\S^2$ (une section de $T\S^2$) un relevé "canonique" de ce champ de vecteurs sur $\S^3$. Or $\S^3$ hérite de la structure riemannienne de $\C^2$ (comme sous-variété réelle) et on peut donc définir $H = (\ker \dd \pi)^\bot \cap T\S^3$ qui est du coup isomorphe à $\pi^* T\S^2$. Cet isomorphisme impose en chaque point une unique direction pour relever le vecteur. Ceci combiné aux conditions d'appartenir à $T\S^3$ et d'être bel et bien l'image réciproque du vecteur sur $\S^2$ impose $4$ conditions linéaires et linéairement indépendantes qui déterminent de manière unique le relevé.
+
+\subsubsection{Expression en coordonnées}
+Soit $z$ la coordonnées naturelle sur $\Pro^1 \cap \Omega_0$ notons $z = u+iv$. Dès lors $u$ et $v$ sont des coordonnées réelles sur un ouvert de $\S^2$.
+L'application $\pi$ s'écrit alors
+\[
+(x,y) \mapsto z = \dfrac{x_2+iy_2}{x_1+iy_1} = \dfrac{(x_1x_2+y_1y_2)+i(x_1y_2-x_2y_1)}{x_1^2 + y_1^2}
+\]
+Ce qui donne
+\begin{eqnarray*}
+u & = & \dfrac{x_1x_2+y_1y_2}{x_1^2 + y_1^2}\\
+v & = & \dfrac{x_1y_2-x_2y_1}{x_1^2 + y_1^2}
+\end{eqnarray*}
+
+Soit $Y = \alpha \partial_u + \beta \partial_v$ un vecteur sur $\S^2$. On cherche $X = a\partial_x + b\partial_y \in T\C^2$ un antécédent à $Y$ avec $a = (a_1,a_2), b=(b_1,b_2)$. C'est-à-dire, on veut, 
+\[
+(\dd \pi) (X) = a(\dd \pi) \partial_x + b(\dd \pi) \partial_y = a\dpp{u}{x}\pi^*\partial_u + a\dpp{v}{x}\pi^*\partial_v + b\dpp{u}{y}\pi^*\partial_u + b\dpp{v}{y}\pi^*\partial_v
+\]
+
+Ce qui donne après identification
+\begin{eqnarray*}
+\alpha & = & a\dpp{u}{x}+b\dpp{u}{y}\\
+\beta & = & a\dpp{v}{x}+ b\dpp{v}{y}
+\end{eqnarray*}
+
+\paragraph{Conditions d'orthogonalité}
+L'unique relevé $X = a\partial_x + b\partial_y$ de $Y$ évoqué précédemment satisfait de plus
+\[
+ax+by =0
+\]
+qui est la condition d'appartenance à $T\S^3 = \ker \dd \mu$. Et
+\[
+bx-ay = 0
+\]
+qui est la condition d'orthogonalité à $\ker \dd \pi$.
+
+\paragraph{Expression matricielle}
+En regroupant toutes ces conditions linéaires, $X$ est l'unique solution du système suivant~:
+\[
+A(x,y)
+\begin{bmatrix}
+a_1 \\ 
+a_2 \\ 
+b_1 \\ 
+b_2
+\end{bmatrix} 
+=
+\begin{bmatrix}
+0 \\ 
+0 \\ 
+\alpha(x_1^2+x_2^2)^2 \\ 
+\beta(x_1^2+x_2^2)^2
+\end{bmatrix} 
+\]
+où
+\[
+A(x,y) = 
+\begin{bmatrix}
+x_1 & x_2 & y_1 & y_2 \\ 
+-y_1 & -y_2 & x_1 & x_2 \\ 
+-x_1^2x_2 +x_2y_1^2 - 2x_1y_1y_2 & x_1^3+x_1y_1^2 & -y_1²y_2+y_2x_1-2y_1x_1x_2 & y_1^3+y_1x_1^2 \\ 
+-x_1^2y_2 +y_2y_1^2 + 2x_1y_1x_2 & -x_1^2y_1 - y_1^3 & -x_1^2x_2 + x_2y_1^2 - 2x_1y_1y_2 & x_1^3 + x_1y_1^2
+\end{bmatrix}
+\]
+
+\subsection{Calcul de la forme symplectique quotient}
+La résolution de ce système par un logiciel de calcul formel \footnote{Sage} nous donne
+\[
+\omega_\text{quotient}\left(
+\alpha \partial_u + \beta \partial_v , 
+\alpha' \partial_u + \beta' \partial_v 
+\right) = \dfrac{(\alpha \beta' - \beta \alpha')(x^2_1+y^2_1)^2}{x^2_1+x^2_2+y^2_1+y^2_2}
+\]
+Si on impose de plus la condition $(x,y) \in N$, en particulier $x^2_1+x^2_2+y^2_1+y^2_2 = 1$ et ainsi on a~:
+\[
+\omega_\text{quotient}\left(
+\alpha \partial_u + \beta \partial_v , 
+\alpha' \partial_u + \beta' \partial_v 
+\right) = |w_1|^4(\alpha \beta' - \beta \alpha')
+\]
+
+\pagebreak
+
+\section{Un exemple de quotient hyperkählérien : $\C^2 \times \C^2/\!\!/\!\!/\ U(1)$}
+\subsection{Structures et notations}
+Soit $M = \C^2 \times \C^2$ munit des coordonnées $(w,z)$ où $w = (w^1,w^2) = (x^1 + i y^1, x^2 + i y^2)$ et $z = (z^1,z^2) = (u^1 + i v^1, u^2 + i v^2)$.
+On considère sur $M$ les structures complexes suivantes
+\[
+I = 
+\begin{bmatrix}
+i1_2 & 0 \\
+0 & -i1_2
+\end{bmatrix}
+\quad
+J = 
+\begin{bmatrix}
+0 & 1_2 \\
+-1_2 & 0
+\end{bmatrix}
+\quad
+K = 
+\begin{bmatrix}
+0 & i1_2 \\
+i1_2 & 0
+\end{bmatrix}
+\]
+Ces trois structures complexes vérifient les relations quaternioniques $I² = J² = K² = IJK = -1_4$ et de plus sont orthogonales pour la structure riemannienne
+\[
+g = (\dd x)^2 + (\dd y)^2 + (\dd u)^2 + (\dd v)^2
+\]
+Ces données munissent $M$ d'une structure de variété hyperkählérienne.
+
+\subsection{Action du groupe unitaire}
+Comme précédemment, le groupe $G = U(1)$ agit sur $M$ par homothétie : $g\cdot m = (g \cdot w, g \cdot z) = (gw^1,gw^2,gz^1,gz^2)$.
+Son action en coordonnées réelles s'écrit
+\[
+e^{i\theta}[(x,y),(u,v)] = \left[(\cos(\theta)x-\sin(\theta)y,\sin(\theta)x+\cos(\theta)y),(\cos(\theta)u-\sin(\theta)v,\sin(\theta)u+\cos(\theta)v)\right]
+\]
+
+Comme précédemment on peut calculer les vecteurs tangents qui proviennent de l'algèbre de Lie de $G$ et qui représentent les déplacement infinitésimaux (en $t$) le long d'une orbite (passant par $m$).
+
+\[
+X_m^t = -ty\dpp{}{x} + tx\dpp{}{y} - tv\dpp{}{u} + tu\dpp{}{v}
+\]
+
+\subsection{Structure tri-symplectique}
+Les trois formes de Kähler $\omega_I,\omega_J,\omega_K$ associées au structures complexes $I,J$ et $K$ munissent $M$ de $3$ structures symplectiques réelles. De plus l'action du groupe $G$ préserve chacune de ces $2$-formes.
+\begin{eqnarray*}
+\omega_I & = & -\dd x \wedge \dd y + \dd u \wedge \dd v\\
+\omega_J & = & \dd x \wedge \dd u + \dd y \wedge \dd v\\
+\omega_K & = & -\dd x \wedge \dd v + \dd y \wedge \dd u
+\end{eqnarray*}
+
+En calculant le produit intérieur de des formes symplectiques par les vecteurs provenant de l'algèbre de Lie de $G$, on obtient $3$ applications moment
+\begin{eqnarray*}
+\mu_I & = & xx+yy-uu-vv\\
+\mu_J & = & -uy+xv\\
+\mu_K & = & yv+xu
+\end{eqnarray*}
+On remarque dès lors que 
+\[
+\mu_I = |w|^2 - |z|^2 \quad \text{ et } \quad \mu_K + i \mu_J = \bar{w}z
+\]
+\subsection{Sous-variété moment et quotient}
+Soient $a,b,c \in \R$. On considère la sous-variété de $M = \C^2 \times \C^2$ définie par
+\[
+N_{a,b,c} = \ens{(w,z) \in M}{|w|^2-|z|^2 = a \;\text{ et }\; \bar{w}z = b+ic}
+\]
+
+On notera $N = N_{1,0,0}$. Quitte à changer $w$ en $\omega := |w|^{-1}(w^1,w^2)$, on a~:
+\[
+N = \ens{((\omega_0,\omega_1),(z_0,z_1)) \in \S^3\times \C^2 }{\omega_0\bar{z_0}+\omega_1\bar{z_1} = 0}
+\]
+Le changement dans les indices est justifié juste en dessous et le passage d'exposant à indice n'est a priori que pratique.
+
+$N$ est naturellement fibré au dessus de $\Pro^1$ par l'application $(\omega,z) \mapsto [\omega_0:\omega_1]$, de plus cette application est $U(1)$-équivariante.
+
+On dispose de plus d'application coordonnées "linéaires" $U(1)$-équivariantes sur $N$ qui munissent le quotient d'une structure de fibré en droite~:
+\[
+\text{ sur } \{ \omega_0 \neq 0 \}\ , \qquad \zeta = \dfrac{\omega_1}{\omega_0}\ ,  \qquad s = \omega_0 \bar{z_1}
+\]
+et
+\[
+\text{ sur } \{ \omega_1 \neq 0 \}\ , \qquad \zeta' = \dfrac{\omega_0}{\omega_1}\ , \qquad s' = -\omega_1 \bar{z_0}
+\]
+Dès lors le changement de trivialisation sur 
+$\{ \omega_0 \neq 0 \} \cap \{ \omega_1 \neq 0 \}$ est donné par
+\[
+\dfrac{s'}{s} = \dfrac{-\omega_1 \bar{z_0}}{\omega_0 \bar{z_1}} = \dfrac{-\omega_1\omega_0 \bar{z_0}}{\omega_0^2 \bar{z_1}}
+ = \dfrac{\omega_1^2 \bar{z_1}}{\omega_0^2 \bar{z_1}} = \left(\dfrac{1}{\zeta'}\right)^2
+\]
+\marginpar{reste à montrer que c'est effectivement le quotient}
+
+Ainsi le quotient s'identifie au fibré $\Oo(-2)$ sur $\Pro^1$.
+
+\subsection{Preuve de l'identification}
+La preuve consiste à identifier l'image de $N/U(1)$ et de l'espace total $\Oo(-2)$ comme sous-schémas localement fermés de  $\Pro^1 \times \Pro^2$.
+\subsubsection{Le cas $\Oo(-2)$}
+On sait que
+\[
+\Oo(-1) = \ens{[x:y],(s,t) \in \Pro^1 \times \C^2}{ sy - tx = 0 }
+\]
+est le fibré tautologique sur $\Pro^1 = P(\C^2)$.
+
+Pareillement, 
+\begin{equation}\label{imageP1xC2}
+\Oo(-2) = \ens{[x:y],(s,t) \in \Pro^1 \times \C^2}{ sy^2 - tx^2 = 0 }
+\end{equation}
+
+\subsubsection{Le cas $N/U(1)$}
+On considère l'application suivante
+\[
+\left(
+\begin{array}{ccccc}
+N & \longrightarrow & \Pro^1 &\times& \C^2\\
+(\omega,z) & \mapsto & \left([\omega_0:\omega_1]\right. &,& \left. (\omega_0\bar{z_1},-\omega_1 \bar{z_0})\right)
+\end{array}
+\right)
+\]
+Alors
+\begin{itemize}
+\item L'application est bien définie ; c'est-à-dire pour $(\omega,z) \in N$, $(\omega_0,\omega_1)$ n'est pas identiquement nul.
+\item L'application est $U(1)$-équivariante ; en effet si $g \in U(1)$ alors $[g\omega_0:g\omega_1]=[\omega_0:\omega_1]$ et $((g\omega_0)\overline{(gz_1)},-(g\omega_1) \overline{(gz_0)})) = (g\bar{g}\omega_0\bar{z_1},-g\bar{g}\omega_1 \bar{z_0})=(\omega_0\bar{z_1},-\omega_1 \bar{z_0})$ ce qui nous donne bien le même point de $\Pro^1 \times \C^2$.
+\item L'application est un quotient de $N$ sous l'action de $U(1)$.\marginpar{définir quotient…}
+\item L'image vérifie bien les propriétés de \eqref{imageP1xC2}.
+\end{itemize}
+
+
+
+
+\subsection{Relevé de champs de vecteurs}
+Nous avons les applications suivantes : $\mu : M \rightarrow \R \oplus \C$ dont $N$ est une fibre et $\pi : N \rightarrow N/G$ on en déduit donc les suites exactes
+\[
+0 \rightarrow \underset{TN}{\underbrace{\ker \dd \mu}} \longrightarrow TM \overset{\dd \mu}{\longrightarrow} \R \oplus \C
+\]
+\[
+0 \rightarrow \ker \dd \pi \longrightarrow TN \overset{\dd \pi}{\longrightarrow} \pi^* T\left( N/G\right) \rightarrow 0
+\]
+
+Or $N \subset M$ peut-être munie de la structure riemannienne induite, ce qui permet d'obtenir une section de $\dd \pi$ par l'identification
+\[
+\pi^* T\left( N/G\right) \cong TN \cap \left(\ker \dd \pi\right)^\bot \cong \ker \dd \mu \cap \left(\ker \dd \pi\right)^\bot
+\]
+
+De plus, $\ker \dd \pi$ s'identifie à $\mathfrak{g} \cong \R$ et est engendré par le vecteur $X$ des déplacements infinitésimaux sous l'action de $G$. Et de même on sait que $(\dd \mu_L)(Y) = \omega_L(X,Y)$ pour $L \in \{I,J,K\}$.
+
+En résumé, pour tout $\tilde{Y}$ champ de vecteur sur $N/G$, il existe un unique champ de vecteur sur $M$ satisfaisant
+\begin{eqnarray*}
+g(X,Y) & = \quad 0 & \text{ orthogonalité avec }\ker \dd \pi \\
+\omega_I(X,Y) & = \quad 0 & \text{ appartenance à }TN \\
+\omega_J(X,Y) & = \quad 0 & \text{ appartenance à }TN \\
+\omega_K(X,Y) & = \quad 0 & \text{ appartenance à }TN \\
+\pi_* Y & = \quad \tilde{Y} & \text{ être un relevé de }\tilde{Y} \text{ dans }TM
+\end{eqnarray*}
+
+Les quatre premières équations signifient que $Y$ est orthogonal au $\Ha$-module à gauche engendré par $X$, si cela a un sens.
+\[
+g(X,Y) = g(IX,Y)= g(JX,Y) = g(KX,Y) = 0
+\]
+Ce qui correspond à $g(qX,Y) = 0$ pour tout $q \in \Ha$.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\iffalse
+\section{Autres quotients symplectiques et hyperkahlériens}
+
+\begin{quote}
+La dépendance de $\mu^{-1}(x)/G$ par rapport à $x$ est la même que la dépendance du quotient au sens de la théorie des invariants d'une variété projective par l'action d'un groupe réductif, qui dépend du choix d'une linéarisation du fibré ample définissant la structure projective.
+\end{quote}
+
+\subsection*{Le quotient hyperkahlérien $\C^2/\!\!/\!\!/U(1)$.} \marginpar{?}
+On doit retrouver un point !
+\subsection{Le quotient symplectique $\Pro^n /\!\!/\ U(1) = \Pro^{n-1}$}
+où $G = U(1)$ agit par
+\[
+\begin{bmatrix}
+e^{-it} & & &\\
+        & e^{it} & &\\
+        & & \ddots &\\
+        & & & e^{it}
+\end{bmatrix}
+\]
+L'algèbre de Lie de $G$ s'identifie à $i\R$ et l'application moment est donnée pour $[z] \in \Pro^n(\C)$ par
+\[
+\mu([v])(i) = \dfrac{-|v_0|^2 + |v_1|^2 + \cdots + |v_n|^2}{2\pi \Vert v \Vert^2}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\appendix
+\section{Cas d'un $\zeta$ générique}
+\subsection{Sous-variété moment}
+Soient $a,b,c \in \R$. On considère la sous-variété de $M = \C^2 \times \C^2$ définie par
+\[
+N_{a,b,c} = \ens{(w,z) \in M}{|w|^2-|z|^2 = a \;\text{ et }\; \bar{w}z = b+ic}
+\]
+Et on notera $N = N_{a,b,c}$.
+
+
+Supposons $a>0$ et $b+ic \neq 0$, Alors $|w| > 0$ et on pose
+\[
+(\omega,z') = \left(
+\dfrac{1}{|w|}\bar{w} , \dfrac{|w|}{b+ic}z
+\right)
+= \left(
+\left(\dfrac{\bar{w}^1}{|w|} ,\dfrac{\bar{w}^2}{|w|}\right), \left(\dfrac{|w|z^1}{b+ic}, \dfrac{|w|z^2}{b+ic}\right)
+\right)
+\]
+qui est un difféomorphisme (on peut retrouver $|z|$ et donc $|w|$ et $z$ à partir de $z'$).\marginpar{ici on fait quelque chose de non holomorphe ! (Diviser par $|w|$, passer au conjugué…)}
+On se ramène au cas
+\[
+N = \ens{(\omega,z) \in \S^3 \times \C^2}{\omega z = \omega^1z^1 + \omega^2z^2 = 1}
+\]
+
+\subsection{Quotient}
+L'action de $U(1)$ sur $N$ est celle le produit $\S^3_{\C^2} \times \C^2$ donnée par $g\cdot (\omega,z) = (\bar{g}\omega,gz)$. On peut également remarquer que l'équation $\omega z = 1$ entraîne $z \neq (0,0)$.
+
+Ainsi l'application
+\[
+\left(
+\begin{array}{ccc}
+N & \longrightarrow & \Pro^1 \times \Pro^1 \\ 
+(\omega,z) & \mapsto & [\omega^1 : \omega^2],[z^1 : z^2]
+\end{array} 
+\right)
+\]
+est $U(1)$-équivariante.\marginpar{Reste à montrer que c'est bien un quotient} L'image de $N$ dans $\Pro^1 \times \Pro^1 $ est alors l'ouvert
+\[
+\ens{[x_0:x_1],[y_0:y_1]\in \Pro^1 \times \Pro^1  }{x_0y_0 + x_1y_1 \neq 0}
+\]
+\subsection{Autre quotient}
+On considère l'application suivante
+\[
+\left(
+\begin{array}{ccc}
+N & \longrightarrow & \C^3 \\ 
+(\omega,z) & \mapsto & (\omega^1z^1, \omega^1z^2, \omega^2z^1)
+\end{array} 
+\right)
+\]
+qui est $U(1)$-équivariante et dont l'image est la quadrique de $\C^3$ d'équation
+\[
+u^2+vw-u = 0
+\]
+
+On peut retrouver ce quotient à partir du précédent en utilisant le plongement de Segre, la condition ouverte permet de restreindre $\Pro^3$ à $\C^3$ dans lequel l'équation de la quadrique de Segre devient $u^2+vw-u = 0$.
+
+\subsection{Cotangent à $\Pro^1$}
+On notera $D = \ens{[x_0:x_1],[y_0:y_1]\in \Pro^1 \times \Pro^1  }{x_0y_0 + x_1y_1 \neq 0}$. Et on considérera $\pi~: D~\rightarrow~\Pro^1$ la projection sur la première coordonnée (projective). Alors $D$ a une structure de fibré en droite sur $\Pro^1$.\marginpar{unique ? naturelle ?}
+
+Sur $\{x_0 \neq 0\}$, on a une coordonnée $\xi = x_1/x_0$ sur $\Pro^1$ et une coordonnée affine $\upsilon = y_1 / (y_0+ \xi y_1)$. Sur l'autre ouvert $\{x_1 \neq 0\}$, on a une coordonnée $\xi' = x_0/x_1$ et une coordonnée affine $\upsilon' = y_0 / (\xi' y_0 +  y_1)$.
+
+Dès lors sur l'intersection
+\[
+\dfrac{\upsilon'}{\upsilon} = \dfrac{y_0}{\xi' y_0 +  y_1} \times \dfrac{y_0 +  \xi y_1}{y_1} = \dfrac{y_0}{y_1} \times \dfrac{y_0 +  \xi y_1}{\xi' y_0 +  y_1} = \xi \dfrac{y_0}{y_1}
+\]\marginpar{ça ne ressemble pas à un $\Oo(\pm 2)$}
+
+
+
+\hline
+
+
+
+\paragraph{Forme symplectique quotient} Notons $\varphi$ l'application quotient $ \S^3_{\C^2} \rightarrow \Pro^1$. On notera $z=u+iv$ la coordonnée correspondant à $w^1/w^2$. Au point $(w^1,w^2) = (0,1)$ on a
+\[
+\varphi_* \dpp{}{x^1} = \dpp{}{u} \quad 
+\varphi_* \dpp{}{y^1} = \dpp{}{v}
+\]
+Maintenant par action de $Sl_2$ et $PGl_2$ sur respectivement $\S^3$ et $\Pro^1$, on peut envoyer le point $(0,1)$ et son image $[0:1]$ sur n'importe quel point, en transportant avec eux les vecteurs tangents. En particulier, on peut déterminer des relevés $X$ et $Y$ de $\partial_u$ et $\partial_v$ sur $\S^3$.
+
+Par exemple la matrice
+\[
+\begin{bmatrix}
+1 & z\\
+0 & 1
+\end{bmatrix}
+\]
+de $Sl_2(\C)$ envoie $[0:1]$ sur $[z:1]$ dans $\Pro^1$. Si $z=u+iv$ alors son action sur $T\S^3$ est donnée par
+\begin{eqnarray*}
+\partial_{x^1}, \partial_{y^1} & \mapsto & \partial_{x^1}, \partial_{y^1}\\
+\partial_{x^2} & \mapsto & u\partial_{x^1}+v\partial_{y^1} + \partial_{x^2}\\
+\partial_{y^2} & \mapsto & u\partial_{y^1}-v \partial_{x^1}+ \partial_{y^2}
+\end{eqnarray*}
+
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{amsalpha}
+\nocite{*}
+\bibliography{biblio}
+\end{document}

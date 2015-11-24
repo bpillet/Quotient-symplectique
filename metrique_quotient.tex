@@ -1,0 +1,421 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{dipneuste}
+\usepackage{ctable}
+\newcommand\transpose[1]{^t\!{#1}}
+
+\begin{document}
+
+\paragraph{Cadre} Soit $V$ un $\C$-espace vectoriel de dimension $n+1$ et $V^*$ son dual sur $\C$.
+
+On notera $w^i$ les coordonnées de $w \in V$ associés à la base $(e_i)_{0 \leq i \leq n}$ et de même on notera $z^i$ les coordonnées de $z \in V^*$ associés à la base duale $(e^*_i)_{0 \leq i \leq n}$.
+
+On considerera éventuellement le coordonnées réelles $x,y,u,v$ définies par les décompositions suivantes $w=x+iy$ et $z=u+iv$.
+
+On dispose d'un accouplement canonique~:
+\[
+\left(
+\begin{array}{ccc}
+M = V \oplus V^*  & \longrightarrow & \C \\ 
+w = (w^i)_i , z = (z^i)_i & \mapsto & z(w) = \sum_i z^iw^i
+\end{array} 
+\right)
+\]
+
+\section{Métriques, structures complexes et formes}
+
+\subsection{Métrique hermitienne}
+\[
+h = \dd \bar{w} \otimes \dd w + \dd \bar{z} \otimes \dd z
+\]
+
+\subsection{Structures complexes}
+\begin{eqnarray}
+I(w,z) & = & (iw,iz) \\
+J(w,z) & = & (-\bar{z},\bar{w})\\
+K(w,z) & = & (i\bar{z},-i\bar{w})
+\end{eqnarray}
+On  vérifie que $K = IJ = -JI$, donc ces structures complexes vérifient les relations quaternioniques.
+
+On notera également l'action de $J$ sur les $1$-formes~:
+\[
+\begin{array}{r|cccc}
+\eta & \dd w & \dd \bar{w} & \dd z  & \dd \bar{z} \\ 
+J^* \eta & -\dd \bar{z} & -\dd z & \dd \bar{w} & \dd w
+\end{array} 
+\]
+
+\subsection{Métrique Riemannienne et formes symplectiques}
+\subsubsection{Métrique}
+On décompose $h$ en partie réelle et imaginaire~:
+\[
+h = g + i \omega_I
+\]
+où $g$ est la métrique riemannienne, $\omega_I$ est la forme de Kähler pour $g$ associée à la structure complexe $I$.
+Un calcul simple montre que 
+\[
+g =  \dd |w|^2 + \dd |z|^2 = \dd x^2 + \dd y^2 + \dd u^2 +\dd v^2
+\]
+et
+\[
+\omega_I = -g(\_,I\_) = \dd x \wedge  \dd y + \dd u \wedge \dd v
+\]
+qui est effectivement Kähler.
+
+\subsubsection{Forme symplectique holomorphe}
+On vérifie que le tenseur $\overline{h(\_,J\_)} = \overline{h^{\bar{k}l}J_l^m} = h^{\bar{l}k}J_{\bar{l}}^m$ définit une forme \textit{symplectique holomorphe} sur $(M,I)$ que l'on note $\omega_\C$\label{symplectique holomorphe, omegaC}.
+\[
+h(\_,J\_) = \dd \bar{w} \otimes J^*\dd w + \dd \bar{z} \otimes J^*\dd z = \dd \bar{w} \otimes (-\dd \bar{z}) + \dd \bar{z} \otimes \dd \bar{w} = \dd \bar{z} \wedge \dd \bar{w}
+\]
+Ainsi
+\begin{equation}
+\omega_\C = \dd z \wedge \dd w
+\end{equation}
+
+\subsubsection{Formes de Kähler}
+On definit, de même que pour $\omega_I$, les formes $\omega_J = -g(\_,J\_)$ et $\omega_K = -g(\_,K\_)$. 
+
+On remarque~:
+\[
+\omega_\C = \overline{h(\_,J\_)} = g(\_,J\_) - i \omega_I(\_,J\_)= -\omega_J +i g(\_,IJ\_) = -\omega_J - i\omega_K
+\]
+\section{Action, action infinitésimale}
+
+\subsection{Action du groupe unitaire}
+On considère $G = U(1)$ qui agit sur $M$ par
+\[
+e^{i\theta}\cdot m = (e^{i\theta}w , e^{-i\theta}z)
+\]
+On a les propriétés suivantes~:
+\begin{itemize}
+\item L'action commute avec $I$ et $J$ et donc avec toutes les structures complexes $aI+bJ+cK$ (avec $(a,b,c) \in \S^3$)
+\item $G$ agit par isométrie sur $M$ : Il conserve la métrique hermitienne et a fortiori la métrique riemannienne.
+\item $G$ préserve les formes symplectiques $\omega_\C,\omega_I,\omega_J,\omega_K$.
+\end{itemize}
+
+\subsection{Action de l'algèbre de Lie}
+On considère l'action infinitésimal de $G$ sur un point $m=(w,z) \in M$.
+\[
+e^{i\theta} \cdot m = (e^{i\theta}w , e^{-i\theta}z) = (w,z) + (i\theta w,-i\theta z) + o(\theta)
+\]
+L'action infinitésimale en $m$ est donc portée par le vecteur 
+\[
+X = (iw,-iz) = -y\dpp{}{x} + x\dpp{}{y} + v\dpp{}{u}-u\dpp{}{v}
+\]
+
+L'espace vectoriel réel engendré par $X$ dans $T_mM$ s'identifie à $\mathfrak{g}$, l'algèbre de Lie de $G$.
+
+On peut également exprimer $X$ à l'aide des champs de vecteurs holomorphes et anti-holomorphes~:
+\[
+X = i\left(
+w\dpp{}{w}-\bar{w}\dpp{}{\bar{w}} + \bar{z}\dpp{}{\bar{z}}-z\dpp{}{z}
+\right)
+\]
+
+
+\section{Forme moment, variété moment}
+
+\subsection{Application moment complexe}
+L'application moment complexe $\mu_\C : M \rightarrow \C$ vérifie l'équation~:
+\[
+\dd \mu_\C = \omega_\C(X,\_) = (\dd z \wedge \dd w) (X,\_) = -i(w\dd z + z\dd w) =-i \dd (wz)
+\]
+Ainsi, quitte à choisir l'origine, on peut prendre $\mu_\C = -iwz$.
+
+\subsection{Application moment réelle}
+L'application moment complexe $\mu_\R : M \rightarrow \R$ vérifie l'équation~:
+\[
+\dd \mu_\R = \omega_I(X,\_) = (\dd x \wedge \dd y + \dd u \wedge \dd v) (X,\_) = -y \dd y - x \dd x + u \dd u + v \dd v = -\demi \dd (w\bar{w} - z\bar{z})
+\]
+Ainsi $\mu_\R= -\demi(w\bar{w} - z\bar{z})$.
+
+\subsection{Variété moment}
+Posons 
+\[
+N = \mu_\R^{-1}(-2) \cap \mu_\C^{-1}(0) = \ens{(w,z) \in M}{w\bar{w} = 1 + z \bar{z} \; , \; wz = 0} \subseteq M
+\]
+C'est une sous-variété de $M$ de codimension (réelle) $3$.
+
+Par construction, ou simplement en vérifiant sur les équations, $N$ est stable sous l'action de $G$.
+
+On peut remarque de plus que $N$ est naturellement fibrée au dessus de la sphère $\S^{2n+1} \subseteq \C^{n+1}$ (et donc, respectivement, au dessus de $\Pro^{n}$) par l'application\marginpar{à vérifier}
+\[
+w \mapsto \dfrac{w}{\sqrt{w\bar{w}}} \; , \; \text{ respectivement , } \; w \mapsto [w^0:\cdots :w^n]
+\]
+\section{Application quotient}
+\subsection{Cas $n=1$}
+On peut écrire l'application quotient globalement,
+\[
+\left(
+\begin{array}{ccc}
+N  & \longrightarrow & \Pro^1 \times \C^2 \\ 
+w , z & \mapsto & [w^0:w^1], (w^0z^1, - w^1z^0)
+\end{array} 
+\right)
+\]
+L'image est le sous-fibré de $\C^2 \times \Pro^1$ sur $\Pro^1$ d'équation $(x_0)^2 y_1 + (x_1)^2 y_0 = 0$, où les $x_i$ sont les coordonnées homogènes sur $\Pro^1$ et les $y_i$ les coordonnées sur $\C^2$ ; qui s'identifie à $\Oo(-2)$.
+
+\subsection{Cas $n$ quelconque}
+Localement, sur l'ouvert $w_0 \neq 0$, on peut écrire l'application quotient ainsi~:
+\[
+\left(
+\begin{array}{ccccc}
+N  & \longrightarrow & \C^n & \times & \C^n \\ 
+w , z & \mapsto & \left(\dfrac{w^1}{w^0}, \dfrac{w^2}{w^0} , \dfrac{w^3}{w^0} , \cdots , \dfrac{w^n}{w^0} \right)&,&(w^0z^1 , w^0z^2 , \cdots , w^0z^n )
+\end{array} 
+\right)
+\]
+
+\section{Équation du tangent aux fibres}
+On a la situation suivante
+\[
+0 \rightarrow \mathfrak{g} \rightarrow TN \rightarrow \pi^*T(N/G) \rightarrow 0
+\]
+Or par construction~:
+\[
+TN = \ker \dd \mu = (I\mathfrak{g} \oplus J\mathfrak{g} \oplus K\mathfrak{g})^\bot \subseteq  TM
+\]
+Ainsi $ \pi^*T(N/G)$ s'identifie à $(\Ha \mathfrak{g})^\bot$ dans $TM$.
+
+On peut associer à chaque vecteur $Y \in T_{\pi(m)}N/G$, un unique vecteur $\hat{Y} \in T_mM$ satisfaisant
+\begin{eqnarray*}
+g(X,\hat{Y}) & =& 0\\
+g(IX,\hat{Y}) & =& 0\\
+g(JX,\hat{Y}) & =& 0\\
+g(KX,\hat{Y}) & =& 0
+\end{eqnarray*}
+ou de manière équivalente~:
+\begin{eqnarray*}
+h(X,\hat{Y}) & =& 0\\
+h(JX,\hat{Y}) & =& 0
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+-ih(X,\_) &=& w \dd \bar{w} - \bar{w} \dd w + \bar{z} \dd z - z \dd \bar{z}\\
+-ih(JX,\_) &=& z \dd w + w \dd z
+\end{eqnarray*}
+
+Relever un champ de vecteur holomorphe $Y$ revient à résoudre le système 
+\[
+M \hat{Y} =
+\begin{bmatrix}
+-ih(X,\_) \\ 
+-ih(JX,\_)  \\[1em]
+\text{Jac}(\pi)\\[0.8em]
+
+\end{bmatrix} 
+ \hat{Y}= 
+\begin{bmatrix}
+0 \\ 
+0 \\[1em]
+Y \\[0.8em]
+\end{bmatrix} 
+\quad	
+\begin{array}{cl}
+\updownarrow & 2  \\[1.3em]
+\updownarrow & n+1
+\end{array} 
+\]
+où Jac désigne le jacobien holomorphe de $\pi$.
+
+\subsection{Cas $n=1$}
+On la matrice	 suivante
+\[
+M = \begin{bmatrix}
+-\bar{w^0} & -\bar{w^1} & \bar{z^0} & \bar{z^1} \\ 
+z^0 & z^1 & w^0 & w^1 \\ 
+-\frac{w^1}{(w^0)^2} & \frac{1}{w^0} & 0 & 0  \\ 
+ z^1& 0 & 0 & w^0 
+\end{bmatrix} 
+\]
+Pour travailler avec des polynômes, on pose $D = \text{diag}(1,1,(w^0)^{-2},1)$ et $M = DM'$. On a alors
+\[
+M' = \begin{bmatrix}
+-\bar{w^0} & -\bar{w^1} & \bar{z^0} & \bar{z^1} \\ 
+z^0 & z^1 & w^0 & w^1 \\ 
+-w^1 & w^0 & 0 & 0  \\ 
+ z^1& 0 & 0 & w^0 
+\end{bmatrix} 
+\]
+
+On veut déterminer $H = (M^{-1})^*M^{-1} = (MM^*)^{-1} = (DM'(M')^*D^*)^{-1} = (D^{-1})^*(M'(M')^*)^{-1}(D^{-1})$ . Posons dès lors $T = M'(M')^*$, un calcul rapide nous donne
+\[
+T = \begin{bmatrix}
+|m|^2 &0 & 0 & 0 \\ 
+0 & |m|^2 & \bar{a} &\bar{b} \\ 
+0 & a & w\bar{w} & \bar{c}  \\ 
+0& b & c & d
+\end{bmatrix} 
+\]
+où
+\begin{eqnarray*}
+|m|^2 & = & w \bar{w} + z \bar{z}\\
+a & = & w^0\bar{z^1}-w^1\bar{z^0} \\
+b & = & \bar{z^0}z^1 + w^0 \bar{w^1} \\
+c & = & -\bar{w^1}z^1 \\
+d & = & w^0\bar{w^0} + z^1 \bar{z^1}
+\end{eqnarray*}
+
+Le calcul de $T^{-1}$ est alors en partie faisable et donne
+
+\[
+T^{-1} = \begin{bmatrix}
+\dfrac{1}{|m|^2} &0 & 0 & 0 \\ 
+0 & * & * &* \\ 
+0 & * & \star & \star  \\ 
+0& *& \star & \star
+\end{bmatrix} 
+\]
+où la partie en bas à droite ($\star$) est occupée par la matrice $T_0$ que l'on cherche~:
+\[
+T_0 = \dfrac{|m|^2}{\det(T)}
+\begin{bmatrix}
+\begin{vmatrix}
+|m|^2 & \bar{b} \\ 
+b & d
+\end{vmatrix}& 
+-\begin{vmatrix}
+|m|^2 & \bar{b} \\ 
+a & \bar{c}
+\end{vmatrix} \\
+-\begin{vmatrix}
+|m|^2 & \bar{a} \\ 
+b & c
+\end{vmatrix} & 
+\begin{vmatrix}
+|m|^2 & \bar{a} \\ 
+a & w\bar{w}
+\end{vmatrix}
+\end{bmatrix} 
+\]
+
+Un calcul informatique nous donne
+\[
+\dfrac{|m|^2}{\det(T)} = \dfrac{1}{|m|^2(w^0\bar{w^0})^2}
+\]
+
+\subsection{Cas $n$ quelconque}
+Dans le cas général, la matrice du système s'écrit
+\[
+\left(
+\begin{array}{c|ccc||c|ccc}
+-\bar{w^0} & -\bar{w^1} & \cdots & -\bar{w^n} & \bar{z^0} & \bar{z^1} & \cdots & \bar{z^n} \\ 
+z^0 & z^1 & \cdots & z^n & w^0 & w^1& \cdots & w^n \\ 
+\specialrule{.05em}{.2em}{.2em} 
+-\frac{w^1}{(w^0)^2} & \frac{1}{w^0} &  & & & & &  \\ 
+ \vdots &    &  \ddots&  & && 0 &  \\ 
+-\frac{w^n}{(w^0)^2} &  0  &  &  \frac{1}{w^0} & & & &  \\ 
+\specialrule{.05em}{.2em}{.2em} 
+ z^1&  & &  & 0 & w^0 &  &0 \\
+ \vdots & & 0  & &\vdots  & & \ddots  & \\
+z^n & & & &0   & &   & w^0 \\
+\end{array}
+\right)
+\]
+Ce qui donne après homogénéisation
+\[
+\left(
+\begin{array}{c|c||c|c}
+-\bar{w^0} & -\transpose{\bar{w'}} & \bar{z^0} & \transpose{\bar{z'}} \\
+z^0 & -\transpose{z'} & w^0 & \transpose{w'} \\ \hline
+-w' & 
+\begin{matrix}
+w^0 & &0 \\
+ & \ddots & \\
+ 0 & & w^0
+\end{matrix} & 0 & 0 \\ \hline
+z' & 0 & 0& 
+\begin{matrix}
+w^0 & &0 \\
+ & \ddots & \\
+ 0 & & w^0
+\end{matrix}
+\end{array}
+\right)
+\]
+où $\transpose{w'}$, resp. $\transpose{z'}$, désigne $(w^1,\cdots w^n)$, resp. $(z^1,\cdots, z^n)$.
+
+
+\section{Métrique quotient}
+La métrique quotient est entièrement déterminée par la matrice hermitienne ($2\times 2$) $H_0$ telle que 
+\[
+H =  (M^{-1})^*M^{-1} =
+\begin{bmatrix}
+* & * \\ 
+* & H_0
+\end{bmatrix}
+\]
+Dès lors $H_0$ est simplement donnée par
+\[
+H_0 = 
+\begin{bmatrix}
+(\bar{w^0})^2 & 0 \\ 
+0 & 1
+\end{bmatrix} \ T_0 \ 
+\begin{bmatrix}
+(w^0)^2 & 0 \\ 
+0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\dfrac{|m|^2d-b\bar{b}}{|m|^2} & -\dfrac{|m|^2\bar{c}-a\bar{b}}{|m|^2(w^0)^2} \\ 
+-\dfrac{|m|^2c-\bar{a}b}{|m|^2(\bar{w^0})^2} & \dfrac{|m|^2w\bar{w}-a\bar{a}}{|m|^2(w^0\bar{w^0})^2}
+\end{bmatrix} 
+\]
+
+Les équations liant les coordonnées $(w,z)$ sur $M$ aux coordonnées $\zeta, \xi$ sur $N/G$ sont les suivantes~:
+\begin{eqnarray}
+w^0 \bar{w^0} + w^1 \bar{w^1} &=& 1 + z^0 \bar{z^0} + z^1 \bar{z^1} \label{n}\\
+w^0 z^0 + w^1z^1 &=& 0\\
+\dfrac{w^1}{w^0} &=& \zeta\\
+w^0z^1 &=& \xi
+\end{eqnarray}
+Dès lors on peut établir les relations suivantes
+
+\begin{eqnarray*}
+|m|^2 & = & (1+\zeta\bar{\zeta})\left(  w^0\bar{w^0} + \dfrac{\xi\bar{\xi}}{w^0\bar{w^0}} \right)\\
+a & = & (w^0)^2\left( \dfrac{\bar{\xi}(1+\zeta\bar{\zeta})}{w^0\bar{w^0}} \right) \\
+b & = & \dfrac{\bar{\xi}}{w^0\bar{w^0}}\left( (w^0\bar{w^0})^2 - \bar{\zeta}\xi \right) \\
+c & = & -\dfrac{\bar{w^0}^2}{w^0\bar{w^0}}\bar{\zeta}\xi \\
+d & = & w^0\bar{w^0} + \dfrac{\xi\bar{\xi}}{w^0\bar{w^0}}
+\end{eqnarray*}
+
+De plus à partir de l'équation \eqref{n}, on déduit une l'équation quadratique satisfaite par $X = w^0\bar{w^0}$~:
+\[
+X^2 - \dfrac{1}{1+\zeta\bar{\zeta}} X - \xi \bar{\xi} = 0
+\]
+De plus $X = w^0\bar{w^0}$ est l'unique solution positive de cette équation, c'est-à-dire~:
+\[
+w^0\bar{w^0} = \dfrac{1+\sqrt{1+4\xi\bar{\xi}(1+\zeta\bar{\zeta})^2}}{2(1+\zeta\bar{\zeta})}
+\]
+
+On remarque cependant que le terme les plus présent est $d = X - \xi\bar{\xi}X^{-1}$, ce qui peut s'écrire~:
+\[
+d = X - \dfrac{\xi\bar{\xi}}{X} = 2X - \dfrac{1}{1+\zeta\bar{\zeta}}  = \dfrac{\sqrt{1+4\xi\bar{\xi}(1+\zeta\bar{\zeta})^2}}{(1+\zeta\bar{\zeta})}
+\]
+
+En suivant la notation de Calabi \cite{Calabi}, on pose $t = \xi\bar{\xi}(1+\zeta\bar{\zeta})^2$ qui correspond à la norme hermitienne du vecteur cotangent $\xi$ au point $\zeta$ induite sur le fibré cotangent par la structure Kahlérienne (Fubini-Study) sur $\Pro^1$.
+
+On peut reprendre
+\begin{eqnarray*}
+|m|^2 & = & \sqrt{1+4t}\\
+a & = &  \dfrac{2(w^0)^2\bar{\xi}}{1+\sqrt{1+4t}} \\
+b & = & \bar{\xi}\left( X - \dfrac{\bar{\zeta}\xi}{X} \right) \\
+c & = & -\left(\bar{w^0}\right)^2\dfrac{2\bar{\zeta}\xi(1+\zeta\bar{\zeta})}{1+\sqrt{1+4t}} \\
+d & = &\dfrac{\sqrt{1+4t}}{(1+\zeta\bar{\zeta})}\\
+a\bar{a} &=& t\\
+b\bar{b} &=& \dfrac{\zeta\bar{\zeta}}{(1+\zeta\bar{\zeta})^2}
+\end{eqnarray*}
+
+\[
+\dfrac{|m|^2w\bar{w}-a\bar{a}}{|m|^2(w^0\bar{w^0})^2}
+ =
+\dfrac{(1+\zeta\bar{\zeta})^2}{\sqrt{1+4t}}
+\]
+
+\[
+\dfrac{|m|^2d-b\bar{b}}{|m|^2}
+ =
+ \dfrac{\sqrt{1+4t}}{(1+\zeta\bar{\zeta})^2} + \dfrac{4\xi\bar{\xi}\zeta\bar{\zeta}}{\sqrt{1+4t}}
+\]
+\end{document}
